@@ -1,0 +1,30 @@
+development:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: rest_development
+  pool:     5
+  username: postgres
+  password: 'password'
+  template: template0
+
+  
+test:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: rest_test
+  pool:     5
+  username: postgres
+  password: 'password'
+  template: template0
+
+production:
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: rest_production
+  pool:     5
+  username: postgres
+  password: 'password'
+  template: template0
