@@ -1,9 +1,5 @@
 module ApplicationHelper
   def admin_user!
-    #unless current_user.role == 'admin'
-    # render json: 'You are not admin'
-      #respond_to do |format|
-      #  format.html { redirect_to root_path, notice: 'You are not admin' }
-      #end
+    render json: { message: 'You are not admin' } unless current_api_v1_user.role == 'admin'
   end
 end

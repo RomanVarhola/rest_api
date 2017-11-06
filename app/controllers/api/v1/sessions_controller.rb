@@ -1,21 +1,20 @@
 module Api
   module V1
-    class Api::SessionsController < Api::BaseController
-      prepend_before_filter :require_no_authentication, :only => [:create ]
-      include Devise::Controllers::InternalHelpers
+    class SessionsController < Devise::SessionsController
+      prepend_before_action :require_no_authentication, :only => [:create ]
       
-      before_filter :ensure_params_exist
+      before_action :ensure_params_exist
 
       respond_to :json
       
       def create
         build_resource
-        resource = User.find_for_database_authentication(:login=>params[:user_login][:login])
+        resource = User.find_for_database_authentication(login: params[:user_login][:login])
         return invalid_login_attempt unless resource
 
         if resource.valid_password?(params[:user_login][:password])
           sign_in("user", resource)
-          render :json=> {:success=>true, :auth_token=>resource.authentication_token, :login=>resource.login, :email=>resource.email}
+          render json: { success: true, auth_token: resource.authentication_token, login: resource.login, email: resource.email}
           return
         end
         invalid_login_attempt
@@ -29,12 +28,12 @@ module Api
 
       def ensure_params_exist
         return unless params[:user_login].blank?
-        render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>422
+        render json: { success: false, message: "missing user_login parameter"}, status: 422
       end
 
       def invalid_login_attempt
         warden.custom_failure!
-        render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
+        render json: {success: false, message: "Error with your login or password"}, status: 401
       end
     end
   end

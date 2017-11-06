@@ -24,6 +24,15 @@ module Requests
       expect(got_id).to_not be_nil
     end
 
+    # When user isn't admin, then we have error message
+    def expect_json_to_get_error_message
+      expect(json['message']).to eq 'You are not admin'
+    end
+
+    def expect_json_to_get_error_after_registration
+      expect(json['password']).to eq ["can't be blank"]
+    end
+
     # Does the JSON response match the ID that we are expecting?
     def expect_json_to_contain_id(match_id)
       expect_json_data_to_be_a_hash
