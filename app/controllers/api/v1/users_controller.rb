@@ -27,7 +27,7 @@ module Api
       def create
         @user = User.new(user_params)
         if @user.save
-          render json: { data: @user }
+          render json: { data: @user, status: :created }
         else
           render json: @user.errors
         end
@@ -35,7 +35,7 @@ module Api
 
       def update
         if @user.update(user_params)
-          render json: { data: @user }
+          render json: { data: @user, status: :updated }
         else
           render json: @user.errors
         end
@@ -43,7 +43,7 @@ module Api
 
       def destroy
         @user.destroy
-        render json: { data: @user }
+        render json: { data: @user, status: :destroyed }
       end
 
       private
