@@ -2,29 +2,35 @@ development:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: rest_development
+  database: rest_api_development
   pool:     5
   username: postgres
   password: 'password'
   template: template0
+  host: postgres
+  port: 5432
 
   
 test:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: rest_test
+  database: rest_api_test
   pool:     5
   username: postgres
   password: 'password'
   template: template0
+  host: postgres
+  port: 5432
 
 production:
   adapter:  postgresql
   host:     localhost
   encoding: unicode
-  database: rest_production
+  database: rest_api_production
   pool:     5
   username: postgres
   password: 'password'
   template: template0
+  host: postgres
+  port: 5432

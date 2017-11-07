@@ -9,7 +9,7 @@ module Requests
     def password
       '12345678'
     end
-    
+
     # used for update checks. Is the name of this data attribute returned
     # in the JSON matching the original, or not?
     def expect_json_data_attribute_to_not_match(attr, match_term)

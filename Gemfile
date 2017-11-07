@@ -45,11 +45,8 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
-end
-
-group :test do
-  gem 'database_cleaner'
   gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
+  gem 'database_cleaner'
 end
 
 group :development do
