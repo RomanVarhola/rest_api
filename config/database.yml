@@ -7,7 +7,7 @@ development:
   username: postgres
   password: 'password'
   template: template0
-  host: postgres
+  host: postgres #for docker
   port: 5432
 
   
@@ -20,7 +20,7 @@ test:
   username: postgres
   password: 'password'
   template: template0
-  host: postgres
+  host: postgres #for docker
   port: 5432
 
 production:
@@ -32,5 +32,5 @@ production:
   username: postgres
   password: 'password'
   template: template0
-  host: postgres
+  host: postgres #for docker
   port: 5432
